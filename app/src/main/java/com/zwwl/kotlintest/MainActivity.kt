@@ -1,8 +1,10 @@
 package com.zwwl.kotlintest
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.zwwl.kotlintest.proxy.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -30,8 +32,11 @@ class MainActivity : AppCompatActivity() {
 
         // hook测试
         val hookUtils = HookUtils(applicationContext)
-        hookUtils.hookTestAPI29()
-
+        if (android.os.Build.VERSION.SDK_INT == Build.VERSION_CODES.O) {
+            hookUtils.hookTestAPI26()
+        } else {
+            hookUtils.hookTestAPI29()
+        }
     }
 
     //初始化块中的代码实际上会成为主构造函数的一部分
@@ -56,9 +61,20 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         button1.setOnClickListener {
-            startActivity(Intent(this, Page1Activity::class.java))
+            onToast()
+            onStartPage()
         }
 
         button2.setOnClickListener { startActivity(Intent(this, Page2Activity::class.java)) }
     }
+
+    private fun onStartPage() {
+        Log.e("########", "我是APP的点击方法 onStartPage")
+        startActivity(Intent(this, Page1Activity::class.java))
+    }
+
+    fun onToast() {
+        Toast.makeText(this, "启动新的页面了", Toast.LENGTH_SHORT).show()
+    }
+
 }
