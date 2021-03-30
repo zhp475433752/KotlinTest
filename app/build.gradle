@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+println 'app的build.gradle'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
@@ -31,7 +33,34 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'androidx.core:core-ktx:1.3.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation 'com.alibaba:fastjson:1.2.8'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
+
+task task2 (){
+    println 'task2的配置阶段'
+    doFirst {
+        println 'task2的doFirst'
+    }
+    doLast {
+        println 'task2的doLast'
+    }
+}
+
+task task1 (dependsOn: task2){
+    println 'task1的配置阶段'
+    doFirst {
+        println 'task1的doFirst'
+    }
+    doLast {
+        println 'task1的doLast'
+    }
+}
+
+
+
+
+
+

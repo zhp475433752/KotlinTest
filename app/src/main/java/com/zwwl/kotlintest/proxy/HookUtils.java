@@ -11,10 +11,13 @@ import java.lang.reflect.Proxy;
  */
 public class HookUtils {
     private Context context;
+    private static String NAME;
 
     public HookUtils(Context context) {
         this.context = context;
     }
+
+
 
     public void hookTestAPI29() {
         try {
@@ -75,5 +78,11 @@ public class HookUtils {
             System.out.println("abc error: " + e.getMessage());
         }
     }
+
+    static String getName(String name) {
+        NAME = name;
+        return NAME;
+    }
+
 
 }
