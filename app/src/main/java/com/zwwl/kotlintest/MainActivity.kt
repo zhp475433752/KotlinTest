@@ -13,13 +13,14 @@ import com.zwwl.kotlintest.proxy.ProxySubject
 import com.zwwl.kotlintest.proxy.RealSubject
 import com.zwwl.kotlintest.ref.ServiceH
 import com.zwwl.kotlintest.ref.TestEnum
+import com.zwwl.kotlintest.thread.MyThread
 import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
     private val TAG: String = "MainActivity"
     var remoteName = ""
-    var iAppManager: IAppManager? = null;
+//    var iAppManager: IAppManager? = null;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -118,6 +119,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         button2.setOnClickListener { startActivity(Intent(this, Page2Activity::class.java)) }
+
+        threadTest()
     }
 
     private fun onStartPage() {
@@ -132,6 +135,18 @@ class MainActivity : AppCompatActivity() {
         declaredMethod.isAccessible = true
         val invoke = declaredMethod.invoke(null, "我是反射名字")
         Toast.makeText(this, invoke as String, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun threadTest() {
+        val thread = MyThread()
+        thread.start()
+        Thread.sleep(500)
+        thread.interrupt()
+        Log.d(TAG, "thread线程 ${thread.name} 是否停止 = "+thread.isInterrupted)
+        Thread.currentThread().interrupt();
+        Log.d(TAG, "运行线程 ${Thread.currentThread().name} 是否停止 = ${Thread.interrupted()}")
+        Log.d(TAG, "运行线程 ${Thread.currentThread().name} 是否停止 = ${Thread.interrupted()}")
+
     }
 
 }

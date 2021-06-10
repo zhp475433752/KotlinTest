@@ -1,0 +1,20 @@
+
+//需要本地依赖调试的组件，请在这里配置
+//注：本地仓库的gradle版本和项目gradle版本保持一致，否则编译错误
+
+ext {
+    composing_dependencies = [
+            EventComponent = [
+                    isLocal : false,    // 是否本地依赖
+                    projectPath : "../LibraryContainer",   // 本地仓库的根目录 settings.gradle目录
+                    projectName : ":EventComponent",          // 组件名称 settings.gradle中的include模块名字
+                    projectMaven : "component.event:component-event"      // 组件的maven地址 groupId:artifactId
+            ],
+            ToolkitComponent = [
+                    isLocal : false,    // 是否本地依赖
+                    projectPath : "../LibraryContainer",   // 本地仓库的根目录 settings.gradle目录
+                    projectName : ":ToolkitComponent",          // 组件名称 settings.gradle中的include模块名字
+                    projectMaven : "component.toolkit:component-toolkit"      // 组件的maven地址 groupId:artifactId
+            ]
+    ]
+}

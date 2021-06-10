@@ -1,3 +1,24 @@
 rootProject.name='KotlinTest'
 include ':app'
 println '项目settings.gradle'
+
+
+// 引入动态切换本地和远程依赖的设置
+apply from: "dependenceSwitchConfig.gradle"
+// 遍历所有配置
+ext.getProperty("composing_dependencies").each { projectConfig ->
+    if (projectConfig["isLocal"]){
+        // 如果是本地依赖
+        println("==========================本地依赖===============================")
+        println("setting---isLocal==="+projectConfig["isLocal"])
+        println("setting---projectPath==="+projectConfig["projectPath"])
+        println("setting---projectMaven==="+projectConfig["projectMaven"])
+        println("setting---projectName==="+projectConfig["projectName"])
+        // 使用本地依赖进行替换
+        includeBuild(projectConfig["projectPath"]) {
+            dependencySubstitution {
+                substitute module(projectConfig["projectMaven"]) with project(projectConfig["projectName"])
+            }
+        }
+    }
+}

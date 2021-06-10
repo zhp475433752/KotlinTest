@@ -10,5 +10,6 @@ public class Page1Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page1);
+        finish();
     }
 }
