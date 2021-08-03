@@ -27,4 +27,18 @@
         android:text="页面2"
         android:layout_width="match_parent"
         android:layout_height="50dp" />
+
+    <Button
+        android:id="@+id/button3"
+        android:textAllCaps="false"
+        android:text="ViewModel测试页面"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:textAllCaps="false"
+        android:text="MediaPlayer视频播放"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
 </LinearLayout>

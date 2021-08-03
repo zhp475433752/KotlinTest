@@ -7,12 +7,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.fastjson.JSON
 import com.zwwl.kotlintest.json.TestBean
+import com.zwwl.kotlintest.mediaplayer.MediaPlayerActivity
 import com.zwwl.kotlintest.proxy.DynamicProxyHandler
 import com.zwwl.kotlintest.proxy.ISubject
 import com.zwwl.kotlintest.proxy.ProxySubject
 import com.zwwl.kotlintest.proxy.RealSubject
-import com.zwwl.kotlintest.ref.ServiceH
-import com.zwwl.kotlintest.ref.TestEnum
 import com.zwwl.kotlintest.thread.MyThread
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -70,6 +69,21 @@ class MainActivity : AppCompatActivity() {
         val testBean = TestBean("123", "zhang")
         val toJSONString = JSON.toJSONString(testBean)
         println("testBean=$toJSONString")
+
+        initView()
+    }
+
+    private fun initView() {
+        button1.setOnClickListener {
+            onToast()
+            onStartPage()
+        }
+
+        button2.setOnClickListener { startActivity(Intent(this, Page2Activity::class.java)) }
+        button3.setOnClickListener { startActivity(Intent(this, MainActivity2::class.java)) }
+        button4.setOnClickListener { startActivity(Intent(this, MediaPlayerActivity::class.java)) }
+
+        threadTest()
     }
 
     fun getMethod() {
@@ -113,14 +127,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        button1.setOnClickListener {
-            onToast()
-            onStartPage()
-        }
 
-        button2.setOnClickListener { startActivity(Intent(this, Page2Activity::class.java)) }
-
-        threadTest()
     }
 
     private fun onStartPage() {

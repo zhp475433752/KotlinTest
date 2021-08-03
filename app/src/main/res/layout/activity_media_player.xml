@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".mediaplayer.MediaPlayerActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <SurfaceView
+            android:id="@+id/surfaceView"
+            android:layout_width="match_parent"
+            android:layout_height="220dp" />
+
+        <LinearLayout
+            android:id="@+id/bottomLayout"
+            android:layout_alignParentBottom="true"
+            android:visibility="gone"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/play"
+                android:src="@android:drawable/ic_media_play"
+                android:padding="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/currentTime"
+                android:text=""
+                android:layout_width="wrap_content"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:layout_height="wrap_content"/>
+            <SeekBar
+                android:id="@+id/seekBar"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:progress="0"
+                android:secondaryProgress="0"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/totalTime"
+                android:text=""
+                android:layout_width="wrap_content"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>
