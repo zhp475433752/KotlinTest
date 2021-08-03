@@ -1,0 +1,50 @@
+def getProjectPropertiesFile(File file, String keyword) {
+    if (file.isDirectory() && (file.name.equals(".gradle")
+            || file.name.equals(".idea")
+            || file.name.equals(".git")
+            || file.name.equals("build")
+            || file.name.equals("gradle")
+            || file.name.equals("libs")
+            || file.name.equals("src")
+            || file.name.equals("BusinessLayer")
+            || file.name.equals("ComponentLayer")
+            || file.name.equals("ServiceLayer")
+            || file.name.equals("ServiceExtensionLayer"))) {
+        return null
+    }
+    File[] fs = file.listFiles()
+    File projectPropertiesFile = null
+    for (File f : fs) {
+        if (f.isFile()) {
+            if (f.getName().equalsIgnoreCase(keyword)) {
+                return f
+            }
+        } else if (f.isDirectory()) {
+            projectPropertiesFile = getProjectPropertiesFile(f, keyword)
+            if (projectPropertiesFile != null)
+                break
+        }
+    }
+    return projectPropertiesFile
+}
+
+def getProjectProperties() {
+    File root = new File(rootProject.rootDir.absolutePath)
+    File projectProperties = getProjectPropertiesFile(root, "project.properties")
+
+    if (projectProperties != null && projectProperties.isFile()) {
+        java.util.Properties properties = new Properties()
+        properties.load(new FileInputStream(projectProperties))
+        return properties
+    }
+}
+
+ext {
+
+    /* 工程编译配置 start*/
+    androidBuildToolsVersion = "28.0.3"
+    androidMinSdkVersion = 19
+    androidTargetSdkVersion = 26
+    androidCompileSdkVersion = 28
+    /* 工程编译配置 end*/
+}
