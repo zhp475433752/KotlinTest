@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.fastjson.JSON
 import com.zwwl.kotlintest.json.TestBean
 import com.zwwl.kotlintest.mediaplayer.MediaPlayerActivity
+import com.zwwl.kotlintest.mediaplayer.VideoViewActivity
 import com.zwwl.kotlintest.proxy.DynamicProxyHandler
 import com.zwwl.kotlintest.proxy.ISubject
 import com.zwwl.kotlintest.proxy.ProxySubject
@@ -82,6 +83,7 @@ class MainActivity : AppCompatActivity() {
         button2.setOnClickListener { startActivity(Intent(this, Page2Activity::class.java)) }
         button3.setOnClickListener { startActivity(Intent(this, MainActivity2::class.java)) }
         button4.setOnClickListener { startActivity(Intent(this, MediaPlayerActivity::class.java)) }
+        button5.setOnClickListener { startActivity(Intent(this, VideoViewActivity::class.java)) }
 
         threadTest()
     }

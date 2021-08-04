@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * MediaPlayer播放示例
  * @author hpzhang
- * @data 2021年08月03日19:01:45
+ * 2021年08月03日19:01:45
  */
 public class MediaPlayerActivity extends AppCompatActivity implements View.OnClickListener, MediaPlayer.OnCompletionListener, MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnPreparedListener, MediaPlayer.OnSeekCompleteListener, MediaPlayer.OnErrorListener, SeekBar.OnSeekBarChangeListener, MediaPlayer.OnInfoListener, OnPlayItemClickListener {
 

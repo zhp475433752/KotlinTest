@@ -41,4 +41,11 @@
         android:text="MediaPlayer视频播放"
         android:layout_width="match_parent"
         android:layout_height="50dp" />
+
+    <Button
+        android:id="@+id/button5"
+        android:textAllCaps="false"
+        android:text="VideoView视频播放"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
 </LinearLayout>
