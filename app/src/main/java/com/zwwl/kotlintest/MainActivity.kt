@@ -2,6 +2,9 @@ package com.zwwl.kotlintest
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.os.Message
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +12,7 @@ import com.alibaba.fastjson.JSON
 import com.zwwl.kotlintest.json.TestBean
 import com.zwwl.kotlintest.mediaplayer.MediaPlayerActivity
 import com.zwwl.kotlintest.mediaplayer.VideoViewActivity
+import com.zwwl.kotlintest.notification.NotificationActivity
 import com.zwwl.kotlintest.proxy.DynamicProxyHandler
 import com.zwwl.kotlintest.proxy.ISubject
 import com.zwwl.kotlintest.proxy.ProxySubject
@@ -20,7 +24,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
     private val TAG: String = "MainActivity"
     var remoteName = ""
-//    var iAppManager: IAppManager? = null;
+
+    //    var iAppManager: IAppManager? = null;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -52,19 +57,20 @@ class MainActivity : AppCompatActivity() {
 
         try {
             val forName = Class.forName("com.zwwl.kotlintest.ref.TestAo")
-            val declaredMethod = forName.getDeclaredMethod("get", Integer::class.java, Object::class.java)
+            val declaredMethod =
+                forName.getDeclaredMethod("get", Integer::class.java, Object::class.java)
             declaredMethod.isAccessible = true
             val result = declaredMethod.invoke(forName.newInstance(), 7, Integer.valueOf(0)) as Int
-            Log.d("###########", "result = "+result)
+            Log.d("###########", "result = " + result)
         } catch (e: Exception) {
-            Log.e("###########", "异常----"+e.message)
+            Log.e("###########", "异常----" + e.message)
         }
         //102437 16879653
         val intValue = 16879653
         val a1 = -16777217 and intValue
         val a2 = intValue or 16777216
-        Log.e("###########", "处理a1="+a1)
-        Log.e("###########", "处理a2="+a2)
+        Log.e("###########", "处理a1=" + a1)
+        Log.e("###########", "处理a2=" + a2)
         getMethod()
 
         val testBean = TestBean("123", "zhang")
@@ -94,7 +100,12 @@ class MainActivity : AppCompatActivity() {
             val declaredMethod = forName.getDeclaredMethod(
                 "a",
                 Int::class.java,
-                arrayOf<Any>(Int::class.java, Int::class.java, Int::class.java, String::class.java).javaClass
+                arrayOf<Any>(
+                    Int::class.java,
+                    Int::class.java,
+                    Int::class.java,
+                    String::class.java
+                ).javaClass
             )
             declaredMethod.isAccessible = true
             declaredMethod.invoke(
@@ -129,7 +140,11 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
+    }
 
+    override fun onPause() {
+        super.onPause()
+        handler.sendEmptyMessageDelayed(1, 5000);
     }
 
     private fun onStartPage() {
@@ -151,11 +166,19 @@ class MainActivity : AppCompatActivity() {
         thread.start()
         Thread.sleep(500)
         thread.interrupt()
-        Log.d(TAG, "thread线程 ${thread.name} 是否停止 = "+thread.isInterrupted)
+        Log.d(TAG, "thread线程 ${thread.name} 是否停止 = " + thread.isInterrupted)
         Thread.currentThread().interrupt();
         Log.d(TAG, "运行线程 ${Thread.currentThread().name} 是否停止 = ${Thread.interrupted()}")
         Log.d(TAG, "运行线程 ${Thread.currentThread().name} 是否停止 = ${Thread.interrupted()}")
 
     }
+
+    private val handler = Handler(object : Handler.Callback {
+        override fun handleMessage(msg: Message): Boolean {
+
+            return false
+        }
+
+    });
 
 }

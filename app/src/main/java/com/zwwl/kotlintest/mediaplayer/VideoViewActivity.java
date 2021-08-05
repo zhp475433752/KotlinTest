@@ -81,4 +81,6 @@ public class VideoViewActivity extends AppCompatActivity implements MediaPlayer.
     public void onClick(View v) {
         finish();
     }
+
+
 }

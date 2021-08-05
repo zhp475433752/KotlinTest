@@ -22,10 +22,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mediaplayer.VideoViewActivity"
+        <activity android:name=".notification.NotificationActivity"></activity>
+        <activity
+            android:name=".mediaplayer.VideoViewActivity"
             android:screenOrientation="landscape"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            ></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".mediaplayer.MediaPlayerActivity"
             android:screenOrientation="portrait" />

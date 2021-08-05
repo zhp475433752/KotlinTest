@@ -1,7 +1,13 @@
 package com.zwwl.kotlintest.mediaplayer;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -17,10 +23,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.zwwl.kotlintest.R;
+import com.zwwl.kotlintest.notification.NotificationActivity;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,6 +36,7 @@ import java.util.List;
 
 /**
  * MediaPlayer播放示例
+ *
  * @author hpzhang
  * 2021年08月03日19:01:45
  */
@@ -53,7 +62,7 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
 
     private boolean isBack = false, isPlayComplete = false;
     private int durationMilSec;//视频总长度：毫秒
-    private final int MSG_WHAT = 1;
+    private final int MSG_WHAT_UPDATE = 1, MSG_WHAT_NOTIFICATION = 2;
 
     private RecyclerView recyclerView;
     private List<PlayBean> data;
@@ -133,7 +142,7 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
             }
         });
 
-
+        handler.sendEmptyMessageDelayed(MSG_WHAT_NOTIFICATION, 2000);
     }
 
     private void prepare() throws IOException {
@@ -194,19 +203,23 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
     private final Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(@NonNull Message msg) {
-            Log.d(TAG, "handleMessage --------------- ");
-            // 在此更新seekBar和播放时间
-            int currentPosition = mediaPlayer.getCurrentPosition();
-            int progress = (int) ((currentPosition / (float) durationMilSec) * 100);
-            if (progress < 0) {
-                progress = 0;
+//            Log.d(TAG, "handleMessage --------------- ");
+            if (msg.what == MSG_WHAT_UPDATE) {
+                // 在此更新seekBar和播放时间
+                int currentPosition = mediaPlayer.getCurrentPosition();
+                int progress = (int) ((currentPosition / (float) durationMilSec) * 100);
+                if (progress < 0) {
+                    progress = 0;
+                }
+                if (progress > 100) {
+                    progress = 100;
+                }
+                seekBar.setProgress(progress);
+                tvCurrentTime.setText(String.valueOf(currentPosition / 1000));
+                handler.sendEmptyMessageDelayed(MSG_WHAT_UPDATE, 1000);
+            } else if (msg.what == MSG_WHAT_NOTIFICATION) {
+                sendNotification();
             }
-            if (progress > 100) {
-                progress = 100;
-            }
-            seekBar.setProgress(progress);
-            tvCurrentTime.setText(String.valueOf(currentPosition / 1000));
-            handler.sendEmptyMessageDelayed(MSG_WHAT, 1000);
             return false;
         }
     });
@@ -252,7 +265,7 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
         Log.d(TAG, "onPrepared - duration - " + durationMilSec);
         tvCurrentTime.setText(String.valueOf(currentSec));
         tvTotalTime.setText(String.valueOf(durationMilSec / 1000));
-        handler.sendEmptyMessageDelayed(MSG_WHAT, 1000);
+        handler.sendEmptyMessageDelayed(MSG_WHAT_UPDATE, 1000);
         isPlayComplete = false;
         bottomLayout.setVisibility(View.VISIBLE);
     }
@@ -285,8 +298,8 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onSeekComplete(MediaPlayer mp) {
         Log.d(TAG, "onSeekComplete");
-        tvCurrentTime.setText(String.valueOf(mp.getCurrentPosition()/1000));
-        handler.sendEmptyMessageDelayed(MSG_WHAT, 1000);
+        tvCurrentTime.setText(String.valueOf(mp.getCurrentPosition() / 1000));
+        handler.sendEmptyMessageDelayed(MSG_WHAT_UPDATE, 1000);
     }
 
     @Override
@@ -351,10 +364,41 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
         Log.d(TAG, "onStopTrackingTouch --- 拖动结束 ---  " + seekBarDragProgress);
-        handler.removeMessages(MSG_WHAT);
+        handler.removeMessages(MSG_WHAT_UPDATE);
         int msec = (int) (durationMilSec * (seekBarDragProgress / 100d));
         mediaPlayer.seekTo(msec);
+    }
 
+    /**
+     * 发送通知
+     */
+    private void sendNotification() {
+        String channel_id = "channel_1000000";
+        String channel_name = "channel_名称";
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        Intent intent = new Intent(getApplicationContext(), NotificationActivity.class);
+        intent.putExtra("data", "这是MediaPlayer页面正在播放视频时发送的通知");
+        PendingIntent pendingIntent = PendingIntent.getActivity(getApplicationContext(), 100, intent, PendingIntent.FLAG_ONE_SHOT);
+        Notification notification;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel notificationChannel = new NotificationChannel(channel_id, channel_name, NotificationManager.IMPORTANCE_DEFAULT);
+            notificationManager.createNotificationChannel(notificationChannel);
+            Notification.Builder builder = new Notification.Builder(getApplicationContext(), channel_id);
+            builder.setContentIntent(pendingIntent)
+                    .setContentTitle("这是测试title")
+                    .setContentText("您正在观看视频")
+                    .setSmallIcon(R.mipmap.ic_launcher);
+            notification = builder.build();
+            notification.flags = Notification.FLAG_AUTO_CANCEL;//点击之后就消失，默认不消失
+        } else {
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(getApplicationContext(), channel_id);
+            builder.setContentIntent(pendingIntent)
+                    .setContentTitle("这是测试title")
+                    .setContentText("您正在观看视频")
+                    .setSmallIcon(R.mipmap.ic_launcher);
+            notification = builder.build();
+        }
+        notificationManager.notify(999, notification);
     }
 
 
