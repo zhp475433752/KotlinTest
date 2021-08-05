@@ -1,4 +1,4 @@
-package com.zwwl.kotlintest.mediaplayer;
+package com.zwwl.kotlintest.media.mediaplayer;
 
 import android.app.Notification;
 import android.app.NotificationChannel;

@@ -3,16 +3,15 @@ package com.zwwl.kotlintest
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.os.Looper
 import android.os.Message
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.fastjson.JSON
 import com.zwwl.kotlintest.json.TestBean
-import com.zwwl.kotlintest.mediaplayer.MediaPlayerActivity
-import com.zwwl.kotlintest.mediaplayer.VideoViewActivity
-import com.zwwl.kotlintest.notification.NotificationActivity
+import com.zwwl.kotlintest.media.exo.ExoPlayerActivity
+import com.zwwl.kotlintest.media.mediaplayer.MediaPlayerActivity
+import com.zwwl.kotlintest.media.videoview.VideoViewActivity
 import com.zwwl.kotlintest.proxy.DynamicProxyHandler
 import com.zwwl.kotlintest.proxy.ISubject
 import com.zwwl.kotlintest.proxy.ProxySubject
@@ -90,6 +89,7 @@ class MainActivity : AppCompatActivity() {
         button3.setOnClickListener { startActivity(Intent(this, MainActivity2::class.java)) }
         button4.setOnClickListener { startActivity(Intent(this, MediaPlayerActivity::class.java)) }
         button5.setOnClickListener { startActivity(Intent(this, VideoViewActivity::class.java)) }
+        button6.setOnClickListener { startActivity(Intent(this, ExoPlayerActivity::class.java)) }
 
         threadTest()
     }

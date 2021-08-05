@@ -22,13 +22,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".notification.NotificationActivity"></activity>
+
         <activity
-            android:name=".mediaplayer.VideoViewActivity"
+            android:name=".media.exo.ExoPlayerActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            />
+
+        <activity android:name=".notification.NotificationActivity" />
+        <activity
+            android:name=".media.videoview.VideoViewActivity"
             android:screenOrientation="landscape"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
-            android:name=".mediaplayer.MediaPlayerActivity"
+            android:name=".media.mediaplayer.MediaPlayerActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity2"

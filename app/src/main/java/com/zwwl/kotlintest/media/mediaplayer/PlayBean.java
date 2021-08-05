@@ -1,4 +1,4 @@
-package com.zwwl.kotlintest.mediaplayer;
+package com.zwwl.kotlintest.media.mediaplayer;
 
 /**
  * Created by zhanghuipeng on 8/3/21.

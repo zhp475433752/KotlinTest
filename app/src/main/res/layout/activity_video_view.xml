@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    tools:context=".mediaplayer.VideoViewActivity">
+    tools:context=".media.videoview.VideoViewActivity">
 
     <RelativeLayout
         android:background="@android:color/black"

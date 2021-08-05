@@ -1,4 +1,4 @@
-package com.zwwl.kotlintest.mediaplayer;
+package com.zwwl.kotlintest.media.videoview;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
