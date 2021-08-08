@@ -18,6 +18,9 @@ import com.google.android.exoplayer2.source.DefaultMediaSourceFactory;
 import com.google.android.exoplayer2.source.MediaSource;
 import com.google.android.exoplayer2.source.ProgressiveMediaSource;
 import com.google.android.exoplayer2.source.dash.DashMediaSource;
+import com.google.android.exoplayer2.source.hls.HlsMediaSource;
+import com.google.android.exoplayer2.source.rtsp.RtspMediaSource;
+import com.google.android.exoplayer2.source.smoothstreaming.SsMediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.DataSource;
@@ -35,7 +38,8 @@ import com.zwwl.kotlintest.R;
 public class ExoPlayerActivity extends AppCompatActivity {
 
     private static final String DEFAULT_MEDIA_URI =
-            "https://storage.googleapis.com/exoplayer-test-media-1/mkv/android-screens-lavf-56.36.100-aac-avc-main-1280x720.mkv";
+//            "https://storage.googleapis.com/exoplayer-test-media-1/mkv/android-screens-lavf-56.36.100-aac-avc-main-1280x720.mkv";
+            "http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8";
 
     @Nullable
     private PlayerView playerView;
@@ -55,16 +59,30 @@ public class ExoPlayerActivity extends AppCompatActivity {
         DataSource.Factory dataSourceFactory = new DefaultDataSourceFactory(this);
         MediaSource mediaSource;
         @C.ContentType int type = Util.inferContentType(uri);
-        if (type == C.TYPE_DASH) {
-            mediaSource =
-                    new DashMediaSource.Factory(dataSourceFactory)
-                            .createMediaSource(MediaItem.fromUri(uri));
-        } else if (type == C.TYPE_OTHER) {
-            mediaSource =
-                    new ProgressiveMediaSource.Factory(dataSourceFactory)
-                            .createMediaSource(MediaItem.fromUri(uri));
-        } else {
-            throw new IllegalStateException();
+        switch (type) {
+            case C.TYPE_DASH:
+                mediaSource = new DashMediaSource.Factory(dataSourceFactory)
+                        .createMediaSource(MediaItem.fromUri(uri));
+                break;
+            case C.TYPE_SS:
+                mediaSource = new SsMediaSource.Factory(dataSourceFactory)
+                        .createMediaSource(MediaItem.fromUri(uri));
+                break;
+            case C.TYPE_HLS:
+                mediaSource = new HlsMediaSource.Factory(dataSourceFactory)
+                        .createMediaSource(MediaItem.fromUri(uri));
+                break;
+            case C.TYPE_RTSP:
+                mediaSource = new RtspMediaSource.Factory()
+                        .createMediaSource(MediaItem.fromUri(uri));
+                break;
+            case C.TYPE_OTHER:
+                mediaSource = new ProgressiveMediaSource.Factory(dataSourceFactory)
+                        .createMediaSource(MediaItem.fromUri(uri));
+                break;
+            default:
+                throw new IllegalStateException();
+
         }
 
         DefaultTrackSelector trackSelector = new DefaultTrackSelector(this);
