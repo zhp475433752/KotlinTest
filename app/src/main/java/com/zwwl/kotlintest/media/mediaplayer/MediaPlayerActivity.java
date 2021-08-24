@@ -252,7 +252,7 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
 
     @Override
     public void onBufferingUpdate(MediaPlayer mp, int percent) {
-//        Log.d(TAG, "缓冲进度 = " + percent);
+        Log.d(TAG, "缓冲进度 = " + percent);
         seekBar.setSecondaryProgress(percent);
     }
 
@@ -352,18 +352,18 @@ public class MediaPlayerActivity extends AppCompatActivity implements View.OnCli
      */
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//        Log.d(TAG, "onProgressChanged -- progress - " + progress + ",fromUser - " + fromUser);
+        Log.d(TAG, "onProgressChanged -- progress - " + progress + ",fromUser - " + fromUser);
         seekBarDragProgress = progress;
     }
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-        Log.d(TAG, "onStartTrackingTouch");
+//        Log.d(TAG, "onStartTrackingTouch");
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
-        Log.d(TAG, "onStopTrackingTouch --- 拖动结束 ---  " + seekBarDragProgress);
+//        Log.d(TAG, "onStopTrackingTouch --- 拖动结束 ---  " + seekBarDragProgress);
         handler.removeMessages(MSG_WHAT_UPDATE);
         int msec = (int) (durationMilSec * (seekBarDragProgress / 100d));
         mediaPlayer.seekTo(msec);

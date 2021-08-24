@@ -38,8 +38,8 @@ import com.zwwl.kotlintest.R;
 public class ExoPlayerActivity extends AppCompatActivity {
 
     private static final String DEFAULT_MEDIA_URI =
-//            "https://storage.googleapis.com/exoplayer-test-media-1/mkv/android-screens-lavf-56.36.100-aac-avc-main-1280x720.mkv";
-            "http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8";
+            "https://storage.googleapis.com/exoplayer-test-media-1/mkv/android-screens-lavf-56.36.100-aac-avc-main-1280x720.mkv";
+//            "http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8";
 
     @Nullable
     private PlayerView playerView;
