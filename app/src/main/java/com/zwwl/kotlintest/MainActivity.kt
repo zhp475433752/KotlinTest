@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.fastjson.JSON
 import com.zwwl.kotlintest.json.TestBean
+import com.zwwl.kotlintest.list.ListActivity
 import com.zwwl.kotlintest.media.camera.CameraActivity
 import com.zwwl.kotlintest.media.exo.ExoPlayerActivity
 import com.zwwl.kotlintest.media.mediaplayer.MediaPlayerActivity
@@ -92,6 +93,7 @@ class MainActivity : AppCompatActivity() {
         button5.setOnClickListener { startActivity(Intent(this, VideoViewActivity::class.java)) }
         button6.setOnClickListener { startActivity(Intent(this, ExoPlayerActivity::class.java)) }
         button7.setOnClickListener { startActivity(Intent(this, CameraActivity::class.java)) }
+        button8.setOnClickListener { startActivity(Intent(this, ListActivity::class.java)) }
 
         threadTest()
     }
