@@ -1,5 +1,6 @@
 package com.zwwl.kotlintest.anim
 
+import android.animation.*
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.AnimationUtils
@@ -7,19 +8,35 @@ import android.widget.Toast
 import com.zwwl.kotlintest.R
 import kotlinx.android.synthetic.main.activity_anim.*
 
-import android.animation.AnimatorInflater
-
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
+import android.view.View
 import android.widget.ImageView
 
 
 class AnimActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_anim)
         anim1()
+        content_layout.visibility = View.GONE
+        loading_layout.postDelayed(Runnable {
+            showContent()
+        }, 1000)
+    }
 
+    private fun showContent() {
+        val integer = getResources().getInteger(
+            android.R.integer.config_shortAnimTime
+        )
+        content_layout.alpha = 0f
+        content_layout.visibility = View.VISIBLE
+        content_layout.animate().alpha(1f).setDuration(500).setListener(null)
+
+        loading_layout.animate().alpha(0f).setDuration(500).setListener(object : AnimatorListenerAdapter(){
+            override fun onAnimationEnd(animation: Animator?) {
+                loading_layout.visibility = View.GONE
+            }
+        })
     }
 
     private fun anim1() {
@@ -39,7 +56,7 @@ class AnimActivity : AppCompatActivity() {
         image1.setOnClickListener { Toast.makeText(this, "我是图片1", Toast.LENGTH_SHORT).show() }
         image2.setOnClickListener { Toast.makeText(this, "我是图片2", Toast.LENGTH_SHORT).show() }
 
-        image1.animate()!!.translationX(100f).setDuration(3000).start()
-        image2.animate()!!.translationX(100f).setDuration(3000).start()
+//        image1.animate()!!.translationX(100f).setDuration(3000).start()
+//        image2.animate()!!.translationX(100f).setDuration(3000).start()
     }
 }

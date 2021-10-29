@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android"
-    android:duration="300"
+    android:duration="2000"
     android:fillAfter="true">
     <translate
         android:fromXDelta="0"
@@ -9,11 +9,8 @@
         android:toYDelta="400" />
 
     <rotate
-        android:duration="300"
         android:fillAfter="true"
         android:fromDegrees="0"
-        android:pivotX="50%"
-        android:pivotY="50%"
         android:toDegrees="360" />
 
     <alpha
@@ -23,8 +20,6 @@
     <scale
         android:fromXScale="1.0"
         android:fromYScale="1.0"
-        android:pivotX="50%"
-        android:pivotY="50%"
         android:toXScale="1.5"
         android:toYScale="1.5" />
 </set>
