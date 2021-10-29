@@ -26,6 +26,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".anim.AnimActivity"
+            android:exported="true" />
+        <activity
             android:name=".list.List2Activity"
             android:exported="true" />
         <activity
