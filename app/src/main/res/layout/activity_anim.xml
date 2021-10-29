@@ -19,6 +19,7 @@
 
             <ImageView
                 android:id="@+id/image1"
+                android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_launcher" />
@@ -30,6 +31,14 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:text="视图动画" />
+
+            <Button
+                android:id="@+id/button11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_toRightOf="@id/button1"
+                android:text="圆形揭露" />
         </RelativeLayout>
 
         <View

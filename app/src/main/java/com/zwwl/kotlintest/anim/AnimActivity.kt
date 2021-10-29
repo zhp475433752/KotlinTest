@@ -1,6 +1,7 @@
 package com.zwwl.kotlintest.anim
 
 import android.animation.*
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.animation.AnimationUtils
@@ -9,6 +10,7 @@ import com.zwwl.kotlintest.R
 import kotlinx.android.synthetic.main.activity_anim.*
 
 import android.view.View
+import android.view.ViewAnimationUtils
 import android.widget.ImageView
 
 
@@ -51,6 +53,7 @@ class AnimActivity : AppCompatActivity() {
         val set = AnimatorInflater.loadAnimator(this, R.animator.animator_property) as AnimatorSet
         set.setTarget(image2)
 
+        button11.setOnClickListener { showImage1() }
         button1.setOnClickListener { image1.startAnimation(anim1) }
         button2.setOnClickListener { set.start() }
         image1.setOnClickListener { Toast.makeText(this, "我是图片1", Toast.LENGTH_SHORT).show() }
@@ -58,5 +61,19 @@ class AnimActivity : AppCompatActivity() {
 
 //        image1.animate()!!.translationX(100f).setDuration(3000).start()
 //        image2.animate()!!.translationX(100f).setDuration(3000).start()
+    }
+
+    private fun showImage1() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val cx:Double = image1.width / 2.0
+            val cy:Double = image1.height / 2.0
+            val finalRadius:Double = Math.hypot(cx, cy)
+
+            val anim : Animator = ViewAnimationUtils.createCircularReveal(image1, cx.toInt(), cy.toInt(), 0f, finalRadius.toFloat())
+            image1.visibility = View.VISIBLE
+            anim.start()
+        } else {
+            image1.visibility = View.INVISIBLE
+        }
     }
 }
