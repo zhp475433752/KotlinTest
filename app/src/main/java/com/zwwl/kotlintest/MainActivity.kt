@@ -8,7 +8,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.fastjson.JSON
-import com.zwwl.kotlintest.anim.AnimActivity
+import com.zwwl.kotlintest.anim.MainAnimActivity
 import com.zwwl.kotlintest.json.TestBean
 import com.zwwl.kotlintest.list.ListActivity
 import com.zwwl.kotlintest.media.camera.CameraActivity
@@ -95,7 +95,7 @@ class MainActivity : AppCompatActivity() {
         button6.setOnClickListener { startActivity(Intent(this, ExoPlayerActivity::class.java)) }
         button7.setOnClickListener { startActivity(Intent(this, CameraActivity::class.java)) }
         button8.setOnClickListener { startActivity(Intent(this, ListActivity::class.java)) }
-        button9.setOnClickListener { startActivity(Intent(this, AnimActivity::class.java)) }
+        button9.setOnClickListener { startActivity(Intent(this, MainAnimActivity::class.java)) }
 
         threadTest()
     }
