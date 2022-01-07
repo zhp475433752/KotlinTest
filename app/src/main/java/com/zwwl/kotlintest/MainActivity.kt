@@ -1,6 +1,7 @@
 package com.zwwl.kotlintest
 
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -15,10 +16,7 @@ import com.zwwl.kotlintest.media.camera.CameraActivity
 import com.zwwl.kotlintest.media.exo.ExoPlayerActivity
 import com.zwwl.kotlintest.media.mediaplayer.MediaPlayerActivity
 import com.zwwl.kotlintest.media.videoview.VideoViewActivity
-import com.zwwl.kotlintest.proxy.DynamicProxyHandler
-import com.zwwl.kotlintest.proxy.ISubject
-import com.zwwl.kotlintest.proxy.ProxySubject
-import com.zwwl.kotlintest.proxy.RealSubject
+import com.zwwl.kotlintest.proxy.*
 import com.zwwl.kotlintest.thread.MyThread
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -48,12 +46,12 @@ class MainActivity : AppCompatActivity() {
         proxy.doAction("我是动态代理")
 
         // hook测试
-////        val hookUtils = HookUtils(applicationContext)
-////        if (android.os.Build.VERSION.SDK_INT == Build.VERSION_CODES.O) {
-////            hookUtils.hookTestAPI26()
-////        } else {
-////            hookUtils.hookTestAPI29()
-////        }
+        val hookUtils = HookUtils(applicationContext)
+        if (android.os.Build.VERSION.SDK_INT == Build.VERSION_CODES.O) {
+            hookUtils.hookTestAPI26()
+        } else {
+            hookUtils.hookTestAPI29()
+        }
 //
 //        iAppManager = IAppManager.Stub.asInterface(AppManagerBinder())
 
