@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initView() {
         button1.setOnClickListener {
-            onToast()
+//            onToast()
             onStartPage()
         }
 
