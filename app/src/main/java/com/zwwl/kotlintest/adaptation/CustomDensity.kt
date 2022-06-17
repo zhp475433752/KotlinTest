@@ -43,5 +43,7 @@ object CustomDensity {
         displayMetrics.density = targetDensity
         displayMetrics.scaledDensity = targetScaleDensity
         displayMetrics.densityDpi = targetDensityDpi
+
+
     }
 }
