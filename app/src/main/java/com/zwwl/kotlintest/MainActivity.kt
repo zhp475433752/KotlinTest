@@ -1,6 +1,7 @@
 package com.zwwl.kotlintest
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
@@ -9,6 +10,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.fastjson.JSON
+import com.zwwl.kotlintest.adaptation.AdaptationActivity
 import com.zwwl.kotlintest.anim.MainAnimActivity
 import com.zwwl.kotlintest.json.TestBean
 import com.zwwl.kotlintest.list.ListActivity
@@ -47,11 +49,11 @@ class MainActivity : AppCompatActivity() {
 
         // hook测试
         val hookUtils = HookUtils(applicationContext)
-        if (android.os.Build.VERSION.SDK_INT == Build.VERSION_CODES.O) {
-            hookUtils.hookTestAPI26()
-        } else {
-            hookUtils.hookTestAPI29()
-        }
+//        if (android.os.Build.VERSION.SDK_INT == Build.VERSION_CODES.O) {
+//            hookUtils.hookTestAPI26()
+//        } else {
+//            hookUtils.hookTestAPI29()
+//        }
 //
 //        iAppManager = IAppManager.Stub.asInterface(AppManagerBinder())
 
@@ -94,6 +96,7 @@ class MainActivity : AppCompatActivity() {
         button7.setOnClickListener { startActivity(Intent(this, CameraActivity::class.java)) }
         button8.setOnClickListener { startActivity(Intent(this, ListActivity::class.java)) }
         button9.setOnClickListener { startActivity(Intent(this, MainAnimActivity::class.java)) }
+        button10.setOnClickListener { startActivity(Intent(this, AdaptationActivity::class.java)) }
 
         threadTest()
     }

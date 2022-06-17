@@ -26,6 +26,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".adaptation.AdaptationActivity"
+            android:exported="false" />
+        <activity
             android:name=".anim.MainAnimActivity"
             android:exported="true" />
         <activity
