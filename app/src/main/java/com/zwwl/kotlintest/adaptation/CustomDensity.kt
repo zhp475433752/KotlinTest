@@ -31,6 +31,11 @@ object CustomDensity {
             })
         }
 
+        /**
+         * 如果设计稿宽度 960dp 高度 540dp
+         * 屏幕可以上下滑动，以宽度为准适配：val targetDensity: Float = appDisplayMetrics.widthPixels / 960f
+         * 屏幕不能上下滑动，以高度为准适配：val targetDensity: Float = appDisplayMetrics.heightPixels / 540f
+         */
         val targetDensity: Float = appDisplayMetrics.widthPixels / 960f
         val targetScaleDensity: Float = targetDensity * (sNonCompatScaleDensity / sNonCompatDensity)
         val targetDensityDpi: Int = (160 * targetDensity).toInt()
