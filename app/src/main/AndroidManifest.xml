@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.zwwl.kotlintest">
+
     <uses-sdk tools:overrideLibrary="androidx.leanback" />
     <!-- 访问网络. 某些位置信息需要从网络服务器获取 -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 访问WiFi状态. 需要WiFi信息用于网络定位 -->
@@ -15,28 +16,31 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.CAMERA" />
-
-    <!--触摸屏非必要-->
+    <uses-permission android:name="android.permission.CAMERA" /> <!-- 触摸屏非必要 -->
     <uses-feature
         android:name="android.hardware.touchscreen"
         android:required="false" />
     <uses-feature
         android:name="android.software.leanback"
         android:required="true" />
-    <uses-feature android:name="android.hardware.faketouch"
-        android:required="false"/>
-    <uses-feature android:name="android.hardware.telephony"
-        android:required="false"/>
-    <uses-feature android:name="android.hardware.camera"
-        android:required="false"/>
-    <uses-feature android:name="android.hardware.location.gps"
-        android:required="false"/>
-    <uses-feature android:name="android.hardware.microphone"
-        android:required="false"/>
-    <uses-feature android:name="android.hardware.sensor"
-        android:required="false"/>
-    <!--    指明这些功能并非应用必需的功能   结束-->
+    <uses-feature
+        android:name="android.hardware.faketouch"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.sensor"
+        android:required="false" />
 
     <application
         android:name=".MyApplication"
@@ -49,15 +53,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".flow.FlowTestActivity"
+            android:exported="false" />
+        <activity
             android:name=".adaptation.AdaptationActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity
             android:name=".anim.MainAnimActivity"
             android:exported="true" />

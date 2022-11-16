@@ -78,6 +78,12 @@
             android:text="适配"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/button11"
+            android:textAllCaps="false"
+            android:text="flow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </androidx.core.widget.NestedScrollView>

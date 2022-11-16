@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.fastjson.JSON
 import com.zwwl.kotlintest.adaptation.AdaptationActivity
 import com.zwwl.kotlintest.anim.MainAnimActivity
+import com.zwwl.kotlintest.flow.FlowTestActivity
 import com.zwwl.kotlintest.json.TestBean
 import com.zwwl.kotlintest.list.ListActivity
 import com.zwwl.kotlintest.media.camera.CameraActivity
@@ -97,6 +98,7 @@ class MainActivity : AppCompatActivity() {
         button8.setOnClickListener { startActivity(Intent(this, ListActivity::class.java)) }
         button9.setOnClickListener { startActivity(Intent(this, MainAnimActivity::class.java)) }
         button10.setOnClickListener { startActivity(Intent(this, AdaptationActivity::class.java)) }
+        button11.setOnClickListener { startActivity(Intent(this, FlowTestActivity::class.java)) }
 
         threadTest()
     }
