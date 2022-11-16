@@ -53,12 +53,15 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".paging3.ui.Paging3Activity"
+            android:exported="false" />
+        <activity
             android:name=".flow.FlowTestActivity"
             android:exported="false" />
         <activity
             android:name=".adaptation.AdaptationActivity"
             android:exported="true"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".anim.MainAnimActivity"
             android:exported="true" />

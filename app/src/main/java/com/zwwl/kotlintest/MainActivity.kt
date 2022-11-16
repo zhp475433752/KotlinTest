@@ -19,6 +19,7 @@ import com.zwwl.kotlintest.media.camera.CameraActivity
 import com.zwwl.kotlintest.media.exo.ExoPlayerActivity
 import com.zwwl.kotlintest.media.mediaplayer.MediaPlayerActivity
 import com.zwwl.kotlintest.media.videoview.VideoViewActivity
+import com.zwwl.kotlintest.paging3.ui.Paging3Activity
 import com.zwwl.kotlintest.proxy.*
 import com.zwwl.kotlintest.thread.MyThread
 import kotlinx.android.synthetic.main.activity_main.*
@@ -99,6 +100,7 @@ class MainActivity : AppCompatActivity() {
         button9.setOnClickListener { startActivity(Intent(this, MainAnimActivity::class.java)) }
         button10.setOnClickListener { startActivity(Intent(this, AdaptationActivity::class.java)) }
         button11.setOnClickListener { startActivity(Intent(this, FlowTestActivity::class.java)) }
+        button12.setOnClickListener { startActivity(Intent(this, Paging3Activity::class.java)) }
 
         threadTest()
     }

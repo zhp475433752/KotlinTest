@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/item_paging_title"
+        android:text="我司titl我司title我司title我司title我司title我司titl我司titl我司title我司title我司title我司title我司title我司title我司title我司title我司title我司title我司title我司title我司title我司titleee我司title我司title我司title我司title我司title我司title我司title我司title我司titlee"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/item_paging_desc"
+        android:layout_marginTop="10dp"
+        android:textSize="18sp"
+        android:text="我是哈哈哈哈哈哈我是哈哈哈哈哈哈哈哈我是哈哈哈哈哈哈哈哈我是哈哈哈哈哈哈哈哈我是哈哈哈哈哈哈哈哈我是哈哈哈哈哈哈哈哈我是哈哈哈哈哈哈哈哈我是哈哈哈哈哈哈哈哈我是哈哈哈哈哈哈哈哈我是哈哈哈哈哈哈哈哈我是哈哈哈哈哈哈哈哈哈哈"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_paging_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+    <ImageView
+        android:id="@+id/item_paging_star"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/item_paging_desc"
+        app:layout_constraintRight_toLeftOf="@id/item_paging_star_number"
+        android:src="@drawable/ic_baseline_star_24"
+        android:layout_marginRight="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/item_paging_star_number"
+        android:textSize="16sp"
+        android:text="323232"
+        android:gravity="center"
+        app:layout_constraintTop_toBottomOf="@id/item_paging_desc"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/item_paging_star"
+        app:layout_constraintBottom_toBottomOf="@id/item_paging_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <View
+        app:layout_constraintTop_toBottomOf="@id/item_paging_star_number"
+        android:background="@android:color/holo_red_light"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1px" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
