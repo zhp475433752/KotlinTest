@@ -53,6 +53,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".func.FuncActivity"
+            android:exported="false" />
+        <activity
             android:name=".paging3.ui.Paging3Activity"
             android:exported="false" />
         <activity

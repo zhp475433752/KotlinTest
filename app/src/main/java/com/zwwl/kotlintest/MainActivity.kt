@@ -13,6 +13,7 @@ import com.alibaba.fastjson.JSON
 import com.zwwl.kotlintest.adaptation.AdaptationActivity
 import com.zwwl.kotlintest.anim.MainAnimActivity
 import com.zwwl.kotlintest.flow.FlowTestActivity
+import com.zwwl.kotlintest.func.FuncActivity
 import com.zwwl.kotlintest.json.TestBean
 import com.zwwl.kotlintest.list.ListActivity
 import com.zwwl.kotlintest.media.camera.CameraActivity
@@ -101,6 +102,7 @@ class MainActivity : AppCompatActivity() {
         button10.setOnClickListener { startActivity(Intent(this, AdaptationActivity::class.java)) }
         button11.setOnClickListener { startActivity(Intent(this, FlowTestActivity::class.java)) }
         button12.setOnClickListener { startActivity(Intent(this, Paging3Activity::class.java)) }
+        button13.setOnClickListener { startActivity(Intent(this, FuncActivity::class.java)) }
 
         threadTest()
     }
