@@ -54,6 +54,7 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".func.FuncActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="false" />
         <activity
             android:name=".paging3.ui.Paging3Activity"
@@ -112,7 +113,7 @@
         <activity android:name=".Page1Activity" />
         <activity android:name=".proxy.ProxyActivity" />
         <activity android:name=".MainActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

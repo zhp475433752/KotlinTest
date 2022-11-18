@@ -1,18 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/func_root"
     tools:context=".func.FuncActivity">
 
-    <TextView
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        android:id="@+id/func_content_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:text="高阶函数测试，具体请看log输出"
+            android:textColor="@color/exo_black_opacity_60"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/func_nav"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:fitsSystemWindows="true"
+        android:background="@color/design_default_color_secondary"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="高阶函数测试，具体请看log输出"
-        android:layout_marginTop="10dp"
-        android:textSize="20sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageView
+            android:id="@+id/func_nav_back"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            android:layout_marginStart="10dp"
+            android:padding="10dp"
+            android:layout_gravity="bottom"
+            android:layout_width="50dp"
+            android:layout_height="50dp" />
+
+        <TextView
+            android:id="@+id/func_title"
+            android:textSize="20sp"
+            android:textColor="#333333"
+            android:textStyle="bold"
+            android:text="自定义沉浸式导航"
+            android:gravity="center_vertical"
+            android:layout_gravity="bottom"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp" />
+
+    </LinearLayout>
+
+
+
+
+</FrameLayout>
