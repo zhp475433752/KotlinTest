@@ -1,102 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:orientation="vertical"
+    android:background="@drawable/animal_2"
     tools:context=".MainActivity">
+<!--    这是约束布局-->
+<!--   androidx.constraintlayout.widget.ConstraintLayout      -->
 
-    <LinearLayout
-        android:orientation="vertical"
+<!--    这是专门用来做上下滑动的坐标的-->
+<!--   androidx.coordinatorlayout.widget.CoordinatorLayout    -->
+
+<!--    <com.google.android.material.appbar.CollapsingToolbarLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:fitsSystemWindows="true">-->
+
+
+<!--    </com.google.android.material.appbar.CollapsingToolbarLayout>-->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/main_recycler_view"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:spanCount="3"
+        android:paddingTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <Button
-            android:id="@+id/button1"
-            android:text="页面1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+        android:layout_height="match_parent" />
 
-        <Button
-            android:id="@+id/button2"
-            android:text="页面2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
-        <Button
-            android:id="@+id/button3"
-            android:textAllCaps="false"
-            android:text="ViewModel测试页面"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/button4"
-            android:textAllCaps="false"
-            android:text="MediaPlayer视频播放"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/button5"
-            android:textAllCaps="false"
-            android:text="VideoView视频播放"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/button6"
-            android:textAllCaps="false"
-            android:text="ExoPlayer视频播放"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/button7"
-            android:textAllCaps="false"
-            android:text="Camera预览"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/button8"
-            android:textAllCaps="false"
-            android:text="列表"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/button9"
-            android:textAllCaps="false"
-            android:text="动画"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <Button
-            android:id="@+id/button10"
-            android:textAllCaps="false"
-            android:text="适配"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/button11"
-            android:textAllCaps="false"
-            android:text="flow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/button12"
-            android:textAllCaps="false"
-            android:text="paging3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <Button
-            android:id="@+id/button13"
-            android:textAllCaps="false"
-            android:text="高阶函数"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-    </LinearLayout>
-
-</androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

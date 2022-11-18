@@ -1,8 +1,7 @@
 package com.zwwl.kotlintest
 
 import android.content.Intent
-import android.content.pm.ActivityInfo
-import android.os.Build
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
@@ -34,6 +33,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        window.statusBarColor = Color.TRANSPARENT
+        // Hide the status bar.
+//        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+        // Remember that you should never show the action bar if the
+        // status bar is hidden, so hide that too if necessary.
+        actionBar?.hide()
+
         Log.d(TAG, "========onCreate")
 
         val human = Human(Gender.MALE)
@@ -86,23 +92,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        button1.setOnClickListener {
-//            onToast()
-            onStartPage()
-        }
 
-        button2.setOnClickListener { startActivity(Intent(this, Page2Activity::class.java)) }
-        button3.setOnClickListener { startActivity(Intent(this, MainActivity2::class.java)) }
-        button4.setOnClickListener { startActivity(Intent(this, MediaPlayerActivity::class.java)) }
-        button5.setOnClickListener { startActivity(Intent(this, VideoViewActivity::class.java)) }
-        button6.setOnClickListener { startActivity(Intent(this, ExoPlayerActivity::class.java)) }
-        button7.setOnClickListener { startActivity(Intent(this, CameraActivity::class.java)) }
-        button8.setOnClickListener { startActivity(Intent(this, ListActivity::class.java)) }
-        button9.setOnClickListener { startActivity(Intent(this, MainAnimActivity::class.java)) }
-        button10.setOnClickListener { startActivity(Intent(this, AdaptationActivity::class.java)) }
-        button11.setOnClickListener { startActivity(Intent(this, FlowTestActivity::class.java)) }
-        button12.setOnClickListener { startActivity(Intent(this, Paging3Activity::class.java)) }
-        button13.setOnClickListener { startActivity(Intent(this, FuncActivity::class.java)) }
+        val adapter = MainAdapter()
+        main_recycler_view.adapter = adapter
+
+        val list: MutableList<MainBean> = mutableListOf()
+        list.add(MainBean("页面1", this::onStartPage))
+        list.add(MainBean("页面2") { startActivity(Intent(this, Page2Activity::class.java)) })
+        list.add(MainBean("ViewModel")  { startActivity(Intent(this, MainActivity2::class.java)) })
+        list.add(MainBean("MediaPlayer") { startActivity(Intent(this, MediaPlayerActivity::class.java)) })
+        list.add(MainBean("VideoView")  { startActivity(Intent(this, VideoViewActivity::class.java)) })
+        list.add(MainBean("ExoPlayer")  { startActivity(Intent(this, ExoPlayerActivity::class.java)) })
+        list.add(MainBean("Camera预览")  { startActivity(Intent(this, CameraActivity::class.java)) })
+        list.add(MainBean("列表")  { startActivity(Intent(this, ListActivity::class.java)) })
+        list.add(MainBean("动画") { startActivity(Intent(this, MainAnimActivity::class.java)) })
+        list.add(MainBean("屏幕适配") { startActivity(Intent(this, AdaptationActivity::class.java)) })
+        list.add(MainBean("flow")  { startActivity(Intent(this, FlowTestActivity::class.java)) })
+        list.add(MainBean("分页paging3")  { startActivity(Intent(this, Paging3Activity::class.java)) })
+        list.add(MainBean("高级函数")  { startActivity(Intent(this, FuncActivity::class.java)) })
+
+        adapter.submitList(list)
 
         threadTest()
     }
