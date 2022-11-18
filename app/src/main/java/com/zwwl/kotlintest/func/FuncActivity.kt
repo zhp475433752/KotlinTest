@@ -30,8 +30,8 @@ class FuncActivity : AppCompatActivity() {
          */
         //沉浸式状态栏设置
         window.statusBarColor = Color.TRANSPARENT
-        func_root.systemUiVisibility = (SYSTEM_UI_FLAG_LAYOUT_STABLE
-                or SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
+        // 稳定布局，避免闪烁。同时将布局内容拓展到状态的后面
+        func_root.systemUiVisibility = (SYSTEM_UI_FLAG_LAYOUT_STABLE or SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
         // 监听window变化，其中 CoordinatorLayout 和 AppBarLayout 、CollapsingToolbarLayout 是存在 OnApplyWindowInsetsListener 的，所以他们的组合可以直接实现沉浸式效果
         ViewCompat.setOnApplyWindowInsetsListener(func_nav) { view, insets ->
             val params = view.layoutParams as FrameLayout.LayoutParams

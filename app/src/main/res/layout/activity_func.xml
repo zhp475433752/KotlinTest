@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/colorAccent"
     android:id="@+id/func_root"
     tools:context=".func.FuncActivity">
 
+<!--    底层内容区域-->
     <LinearLayout
         android:orientation="vertical"
         android:layout_marginTop="50dp"
@@ -22,6 +24,7 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
+<!--    自定义沉浸式导航-->
     <LinearLayout
         android:id="@+id/func_nav"
         android:orientation="horizontal"
@@ -55,8 +58,6 @@
             android:layout_height="50dp" />
 
     </LinearLayout>
-
-
 
 
 </FrameLayout>
