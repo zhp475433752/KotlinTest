@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity() {
         list.add(MainBean("屏幕适配") { startActivity(Intent(this, AdaptationActivity::class.java)) })
         list.add(MainBean("flow")  { startActivity(Intent(this, FlowTestActivity::class.java)) })
         list.add(MainBean("分页paging3")  { startActivity(Intent(this, Paging3Activity::class.java)) })
-        list.add(MainBean("高级函数")  { startActivity(Intent(this, FuncActivity::class.java)) })
+        list.add(MainBean("高阶函数")  { startActivity(Intent(this, FuncActivity::class.java)) })
 
         adapter.submitList(list)
 

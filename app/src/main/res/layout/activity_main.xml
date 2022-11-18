@@ -21,13 +21,14 @@
 
 
 <!--    </com.google.android.material.appbar.CollapsingToolbarLayout>-->
+
+<!--   android:clipToPadding="false" 不裁剪Padding区域 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_recycler_view"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="3"
-        android:paddingTop="20dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:padding="10dp"
+        android:clipToPadding="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
