@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--    标题栏背景颜色-->
     <color name="colorPrimary">#6200EE</color>
+    <!--    状态栏透明层颜色-->
     <color name="colorPrimaryDark">#3700B3</color>
+    <!--    着重强调色，一般如 floatingActionBar 按钮的颜色，RadioButton／输入框聚焦／进度条等色值-->
     <color name="colorAccent">#FFC107</color>
+    <!--   标题栏文字颜色 ，没变化，改了button文字颜色-->
+    <color name="textColorPrimary">#ff0000</color>
+    <!--    窗口背景色-->
+    <color name="windowBackground">#ffffff</color>
+    <!--    状态栏颜色-->
+    <color name="statusBarColor">#00000000</color>
+
+
     <color name="colorUnCheck">#666666</color>
 </resources>
