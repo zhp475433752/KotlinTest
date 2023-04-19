@@ -71,6 +71,7 @@ class FlowTestActivity : AppCompatActivity() {
     }
 
     /**
+     * SYSTEM_UI_FLAG_VISIBLE 默认显示
      * SYSTEM_UI_FLAG_LOW_PROFILE
     - SYSTEM_UI_FLAG_HIDE_NAVIGATION
     - SYSTEM_UI_FLAG_FULLSCREEN
