@@ -2,16 +2,20 @@ package com.zwwl.kotlintest
 
 import android.content.Intent
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
 import android.util.Log
+import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.fastjson.JSON
 import com.zwwl.kotlintest.adaptation.AdaptationActivity
 import com.zwwl.kotlintest.anim.MainAnimActivity
 import com.zwwl.kotlintest.flow.FlowTestActivity
+import com.zwwl.kotlintest.fullscreen.FullScreenActivity
 import com.zwwl.kotlintest.func.FuncActivity
 import com.zwwl.kotlintest.json.TestBean
 import com.zwwl.kotlintest.list.ListActivity
@@ -110,6 +114,7 @@ class MainActivity : AppCompatActivity() {
         list.add(MainBean("flow")  { startActivity(Intent(this, FlowTestActivity::class.java)) })
         list.add(MainBean("分页paging3")  { startActivity(Intent(this, Paging3Activity::class.java)) })
         list.add(MainBean("高阶函数")  { startActivity(Intent(this, FuncActivity::class.java)) })
+        list.add(MainBean("横屏全屏")  { startActivity(Intent(this, FullScreenActivity::class.java)) })
 
         adapter.submitList(list)
 
@@ -202,5 +207,4 @@ class MainActivity : AppCompatActivity() {
         }
 
     });
-
 }
