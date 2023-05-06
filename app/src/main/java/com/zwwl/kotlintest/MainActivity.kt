@@ -2,13 +2,10 @@ package com.zwwl.kotlintest
 
 import android.content.Intent
 import android.graphics.Color
-import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
 import android.util.Log
-import android.view.View
-import android.view.WindowManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.alibaba.fastjson.JSON
@@ -93,6 +90,36 @@ class MainActivity : AppCompatActivity() {
         println("testBean=$toJSONString")
 
         initView()
+
+        onToast("zhang", "san")
+
+        listTest()
+
+    }
+
+    private fun listTest() {
+
+
+//            Intent intent = null;
+//            int index = -1;
+//            for (int i = 0; i < args.length; i++) {
+//                Object obj = args[i];
+//                if (obj instanceof Intent) {
+//                    //找到 startActivity 传递进来的真实 Intent
+//                    intent = (Intent) obj;
+//                    index = i;
+//                    break;
+//                }
+//            }
+//
+//            // 构造假的意图，将真正的意图进行篡改
+//            Intent intentFade = new Intent(context, ProxyActivity.class);
+//            //我们将真实的意图封装在假意图当中
+//            intentFade.putExtra("originIntent", intent);
+//            if (index != -1) {
+//                args[index] = intentFade;
+//            }
+
     }
 
     private fun initView() {
@@ -179,13 +206,14 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(this, Page1Activity::class.java))
     }
 
-    fun onToast() {
-//        Toast.makeText(this, iAppManager?.name, Toast.LENGTH_SHORT).show()
-        val forName = Class.forName("com.zwwl.kotlintest.proxy.HookUtils")
-        val declaredMethod = forName.getDeclaredMethod("getName", String::class.java)
-        declaredMethod.isAccessible = true
-        val invoke = declaredMethod.invoke(null, "我是反射名字")
-        Toast.makeText(this, invoke as String, Toast.LENGTH_SHORT).show()
+    fun onToast(s1: String, s2: String) {
+        Toast.makeText(this, "我是toast:$s1-$s2", Toast.LENGTH_SHORT).show()
+//        val forName = Class.forName("com.zwwl.kotlintest.proxy.HookUtils")
+//        val declaredMethod = forName.getDeclaredMethod("getName", String::class.java)
+//        declaredMethod.isAccessible = true
+//        val invoke = declaredMethod.invoke(null, "我是反射名字")
+//        Toast.makeText(this, invoke as String, Toast.LENGTH_SHORT).show()
+
     }
 
     private fun threadTest() {
