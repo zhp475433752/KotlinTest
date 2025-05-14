@@ -95,6 +95,9 @@ class MainActivity : AppCompatActivity() {
 
         listTest()
 
+        // 腾讯云日志请求统计
+        JsonProcessor.processAssetsJson(applicationContext, "log-0513.json")
+
     }
 
     private fun listTest() {
