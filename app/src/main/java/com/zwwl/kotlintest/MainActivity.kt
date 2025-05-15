@@ -96,8 +96,11 @@ class MainActivity : AppCompatActivity() {
         listTest()
 
         // 腾讯云日志请求统计
-        JsonProcessor.processAssetsJson(applicationContext, "log-0513.json")
-
+        val set0513 = JsonProcessor.processAssetsJson(applicationContext, "log-0513.json")
+        val set0514 = JsonProcessor.processAssetsJson(applicationContext, "log-0514.json")
+        // 若 set0514 有 set0513 的元素，则说明有重复，需要从 set0514 中删除
+        set0514.removeAll(set0513)
+        println("处理完毕 --- 去重后大小: ${set0514.size}")
     }
 
     private fun listTest() {

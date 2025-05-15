@@ -11,7 +11,7 @@ object JsonProcessor {
     // 定义实体类
     data class DevBean(val dev: String, val imei: String)
 
-    fun processAssetsJson(context: Context, fileName: String) {
+    fun processAssetsJson(context: Context, fileName: String) : MutableSet<String> {
         try {
             // 1. 读取assets文件
             val inputStream = context.assets.open(fileName)
@@ -58,6 +58,9 @@ object JsonProcessor {
 
                 resultList.forEach { bean ->
                     devSet.add(bean.dev)
+                    if (!bean.dev.startsWith("ZYB_")) {
+                        println("处理完毕 --- 非作业帮学习机型号: $devSet")
+                    }
                     jsonArray.put(JSONObject().apply {
                         put("dev", bean.dev)
                         put("imei", bean.imei)
@@ -71,9 +74,12 @@ object JsonProcessor {
                 outputFile.writeText(jsonArray.toString())
 
                 println("处理完毕 --- 输出文件路径: ${outputFile.absolutePath}")
+
+                return uniqueImeis
             }
         } catch (e: IOException) {
             e.printStackTrace()
         }
+        return mutableSetOf()
     }
 }
